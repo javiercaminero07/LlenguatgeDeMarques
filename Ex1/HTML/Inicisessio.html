@@ -1,0 +1,61 @@
+<!--<html>
+<form action="/action_page.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <input class="btn" type="button" value="enviar">
+</form>
+</html>-->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Formulari de contacte</title>
+</head>
+
+
+<body>	
+	<div class="contact_form">
+		<div class="formulario">			
+            <h1>Formulario de contacto</h1>
+			<h2>Aquest formulari es per iniciar sessió a la nostra pàgina web. Cap dada personal que escrigui serà recollida per un tercer</h2>
+            <form action="submeter-formulario.php" method="post">				
+				<p>
+				    <label for="nombre" class="colocar_nombre">Nombre
+					    <span class="obligatorio">*</span>
+					</label>
+					<input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
+				</p>
+							
+				<p>
+					<label for="email" class="colocar_email">Email
+						<span class="obligatorio">*</span>
+					</label>
+					<input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
+				</p>
+				<p>
+					<label for="telèfon" class="colocar_telefono">Teléfono
+                        <span class="opcional">~</span>
+					</label>
+										<input type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu teléfono">
+								</p>			
+							
+								<p>
+									<label for="asunto" class="colocar_asunto">Asunto
+										<span class="obligatorio">*</span>
+									</label>
+										<input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
+								</p>			  								
+							
+								<button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+
+								<p class="aviso">
+									<span class="obligatorio"> * </span>los campos son obligatorios.
+								</p>					
+						
+					</form>
+		</div>	
+	</div>
+
+</body>
+</html>
