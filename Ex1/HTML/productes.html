@@ -3,62 +3,81 @@
     <head>
         <title>Steel Core Collection</title>
          <meta charset="utf8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="icon" href="../Fotos/SCC Black Logo Icon.png"></link>
          <link rel="stylesheet" href="../CSS/style.css">
     </head>
     <body>
-        <!-- header defineix una zona a dins del body, sempre a la part superior-->
         <header>
             <div id="logo">
                 <img src="../Fotos/SCC Colour Logo Icon.png" width="10%" height="10%"></img>
                 <h1>Steel Core Collection</h1>
+            <a href="../HTML/Inicisessio.html">
+            <img src="../Fotos/iniciosesiondef.png" width="3%" height="5%">
+            </a>
             </div>
             <h2>Equipament de Gimnàs</h2>
-            <!-- definim un navegador, com si fora una llista per ara les referencies no apunten enlloc-->
             <nav>
-                <li><a href="../HTML/inicio.html">Inici</a></li>
-                <li><a href="#">Productes</a></li>
-                <li><a href="../HTML/serveis.html">Serveis</a></li>
-                <li><a href="#">Contacte</a></li>
+                <ul class="menu">
+                    <li><a href="../HTML/inicio.html">Inici</a></li>
+                    <li><a href="#">Productes</a></li>
+                    <li><a href="../HTML/serveis.html">Serveis</a></li>
+                    <li><a href="../HTML/contacte.html">Contacte</a></li>
+                </ul>
             </nav>
         </header>
         <section>
-            <!-- dins d'una secció podem definir diferents articles-->
             <article classe="cuadro">
                 <h1>Peses Regulables</h1> 
                 <img src="../Fotos/pesas.jpg" width="60%" height="40%"></img>
                 <h2>Silverstone</h2>
-                <h3> Preu: 30,99€</h3>            
+                <h3> Preu: 30,99€</h3>    
+                <button type="submit" name="comprar_producto" id="comprar"><p>Comprar</p></button>        
             </article>
             <article classe="cuadro">
                 <h1>Pesa Rusa</h1> 
                 <img src="../Fotos/pesarusa.jpeg" width="60%" height="40%"></img>               
                 <h2>Silverstone</h2>
                 <h3> Preu: 11,99€</h3>
+                <button type="submit" name="comprar_producto" id="comprar"><p>Comprar</p></button>
             </article>
             <article classe="cuadro">
                 <h1>Guants amb canellera</h1> 
                 <img src="../Fotos/guantes.jpeg" width="60%" height="40%"></img>               
                 <h2>RL Grips</h2>
                 <h3> Preu: 5,99€</h3>
+                <button type="submit" name="comprar_producto" id="comprar"><p>Comprar</p></button>
             </article>
             <article classe="cuadro">
                 <h1>Barra olimpica</h1>    
                 <img src="../Fotos/barraolimpica.jpg" width="60%" height="40%"></img>            
                 <h2>Viok Sport</h2>
                 <h3> Preu: 64,99€</h3>
+                <button type="submit" name="comprar_producto" id="comprar"><p>Comprar</p></button>
             </article>
             <article classe="cuadro">
                 <h1>Bandes elàstiques</h1>
                 <img src="../Fotos/picture.jpg" width="60%" height="40%"></img>
                 <h2>Decathlon</h2>
                 <h3> Preu: 9,99€</h3>
+                <button type="submit" name="comprar_producto" id="comprar"><p>Comprar</p></button>
             </article>
         </section>
         <footer>
             &copy;2022-2025 Copyright Steel Core Collection
+            <p>
+            <aside>
+                <a href="https://www.instagram.com/">
+                <img src="../Fotos/Instagram_logo_2022.png" width="3%" height="5%">
+                </a>
+                <a href="https://www.facebook.com/">
+                <img src="../Fotos/facebook.jpeg" width="3%" height="5%">
+                </a>
+                <a href="https://x.com/">
+                <img src="../Fotos/x.png" width="3%" height="5%">
+                </a>
+            </aside>
+            </p>
         </footer>
-
-
     </body>
 </html>
