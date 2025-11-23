@@ -1,19 +1,13 @@
-<!--<html>
-<form action="/action_page.php">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input class="btn" type="button" value="enviar">
-</form>
-</html>-->
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Formulari de contacte</title>
+	<div class="contenedor">
+		<img src="../Fotos/SCC Colour Logo Icon.png" alt="" width="10%" height="20%"></img>
+	</div>
+	<link rel="stylesheet" href="../CSS/style.css">
 </head>
-
-
 <body>	
 	<div class="contact_form">
 		<div class="formulario">			
@@ -24,38 +18,89 @@
 				    <label for="nombre" class="colocar_nombre">Nombre
 					    <span class="obligatorio">*</span>
 					</label>
-					<input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
+					<input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escriu el teu nom">
+				</p>			
+				<p>
+				    <label for="cognom" class="colocar_cognom">Cognom
+					    <span class="obligatorio">*</span>
+					</label>
+					<input type="text" name="introducir_cognom" id="cognom" required="obligatorio" placeholder="Escriu el teu cognom">
 				</p>
-							
 				<p>
 					<label for="email" class="colocar_email">Email
 						<span class="obligatorio">*</span>
 					</label>
-					<input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
+					<input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escriu el teu email">
 				</p>
 				<p>
 					<label for="telèfon" class="colocar_telefono">Teléfono
                         <span class="opcional">~</span>
 					</label>
-										<input type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu teléfono">
-								</p>			
-							
-								<p>
-									<label for="asunto" class="colocar_asunto">Asunto
-										<span class="obligatorio">*</span>
-									</label>
-										<input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
-								</p>			  								
-							
-								<button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
-
-								<p class="aviso">
-									<span class="obligatorio"> * </span>los campos son obligatorios.
-								</p>					
-						
-					</form>
+					<input type="tel" name="introducir_telefono" id="telefono" placeholder="Escriu el teu número de teléfon">
+				</p>						
+				<p>
+					<label for="contraseña" class="colocar_contraseña">Contraseña</label>
+					<input type="text" name="introducir_contraseña" id="contraseña" placeholder="Escriu la contraseña que vulguis">
+				</p>		
+				<p>
+					<label for="asunto" class="colocar_asunto">Asunto
+						<span class="obligatorio">*</span>
+					</label>
+					<input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escriu lasunto">
+				</p>			  				
+				<p>
+					<label for="mensaje" class="colocar_mensaje">Mensaje
+						<span class="obligatorio">*</span>
+					</label>                     
+                    <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea> 
+                </p>	  															
+				<label for="pais">País:</label>
+				<select name="pais" id="pais">
+					<option value="espanya">Espanya</option>
+					<option value="frança">França</option>
+					<option value="italia">Itàlia</option>
+					<option value="alemanya">Alemanya</option>
+					<option value="paisos_baixos">Països Baixos</option>
+					<option value="noruega">Noruega</option>
+					<option value="suecia">Suecia</option>
+					<option value="portugal">Portugal</option>
+					<option value="grecia">Grècia</option>
+					<option value="finlandia">Finlàndia</option>
+					<option value="russia">Russia</option>
+					<option value="polonia">Polònia</option>
+					<option value="regne_unit">Regne Unit</option>
+					<option value="dinamarca">Dinamarca</option>
+					<option value="irlanda">Irlanda</option>
+					<option value="suissa">Suïssa</option>
+					<option value="belgica">Bèlgica</option>
+					<option value="austria">Àustria</option>
+					<option value="bulgaria">Bulgària</option>
+					<option value="ucrania">Ucrània</option>
+					<option value="mexic">Mèxic</option>
+					<option value="costa_rica">Costa Rica</option>
+					<option value="cuba">Cuba</option>
+					<option value="panama">Panamà</option>
+					<option value="guatemala">Guatemala</option>
+					<option value="republica_dominicana">República Dominicana</option>
+					<option value="argentina">Argentina</option>
+					<option value="bolivia">Bolívia</option>
+					<option value="brasil">Brasil</option>
+					<option value="colombia">Colombia</option>
+					<option value="xile">Xile</option>
+					<option value="paraguai">Paraguai</option>
+					<option value="equador">Equador</option>
+					<option value="peru">Peú</option>
+					<option value="uruguai">Uruguai</option>
+					<option value="veneçuela">Veneçuela</option>
+				</select>
+				<p>
+				<button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+				</p>
+				<p class="aviso">
+					<span class="obligatorio"> * </span>los campos son obligatorios.
+				</p>						
+			</form>
 		</div>	
 	</div>
-
 </body>
 </html>
