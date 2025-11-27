@@ -12,10 +12,10 @@
             <div id="logo">
                 <img src="../Fotos/SCC Colour Logo Icon.png" width="10%" height="10%"></img>
                 <h1>Steel Core Collection</h1>
+                </div>
             <a href="../HTML/Inicisessio.html">
-            <img src="../Fotos/iniciosesiondef.png" width="3%" height="5%">
+            <img src="../Fotos/iniciosesiondef.png">
             </a>
-            </div>
             <h2>Contacte</h2>
             <nav>
                 <ul class="menu">
@@ -25,21 +25,115 @@
                     <li><a href="#">Contacte</a></li>
                 </ul>
             </nav>
-        </header>
+        </header>	
+	<div>
+		<div>			
+            <h1>Formulario de contacto</h1>
+			<h2>Aquest formulari es per iniciar sessió a la nostra pàgina web. Cap dada personal que escrigui serà recollida per un tercer</h2>
+            <form action="submeter-formulario.php" method="post">				
+				<p>
+				    <label>Nombre
+					    <span class="obligatorio">*</span>
+					</label>
+					<input type="text" required="obligatorio" placeholder="Escriu el teu nom">
+				</p>			
+				<p>
+				    <label>Cognom
+					    <span class="obligatorio">*</span>
+					</label>
+					<input type="text" required="obligatorio" placeholder="Escriu el teu cognom">
+				</p>
+				<p>
+					<label>Email
+						<span class="obligatorio">*</span>
+					</label>
+					<input type="email" required="obligatorio" placeholder="Escriu el teu email">
+				</p>
+				<p>
+					<label>Teléfono
+                        <span class="opcional">~</span>
+					</label>
+					<input type="tel" placeholder="Escriu el teu número de teléfon">
+				</p>						
+				<p>
+					<label>Asunto
+						<span class="obligatorio">*</span>
+					</label>
+					<input type="text" required="obligatorio" placeholder="Escriu lasunto">
+				</p>			  				
+				<p>
+					<label>Mensaje
+						<span class="obligatorio">*</span>
+					</label>                     
+                    <textarea required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea> 
+                </p>	  															
+				<label>País:
+                    <span class = "obligatorio">*</span>
+                </label>
+				<select name="pais" id="pais">
+					<option value="espanya">Espanya</option>
+					<option value="frança">França</option>
+					<option value="italia">Itàlia</option>
+					<option value="alemanya">Alemanya</option>
+					<option value="paisos_baixos">Països Baixos</option>
+					<option value="noruega">Noruega</option>
+					<option value="suecia">Suecia</option>
+					<option value="portugal">Portugal</option>
+					<option value="grecia">Grècia</option>
+					<option value="finlandia">Finlàndia</option>
+					<option value="russia">Russia</option>
+					<option value="polonia">Polònia</option>
+					<option value="regne_unit">Regne Unit</option>
+					<option value="dinamarca">Dinamarca</option>
+					<option value="irlanda">Irlanda</option>
+					<option value="suissa">Suïssa</option>
+					<option value="belgica">Bèlgica</option>
+					<option value="austria">Àustria</option>
+					<option value="bulgaria">Bulgària</option>
+					<option value="ucrania">Ucrània</option>
+					<option value="mexic">Mèxic</option>
+					<option value="costa_rica">Costa Rica</option>
+					<option value="cuba">Cuba</option>
+					<option value="panama">Panamà</option>
+					<option value="guatemala">Guatemala</option>
+					<option value="republica_dominicana">República Dominicana</option>
+					<option value="argentina">Argentina</option>
+					<option value="bolivia">Bolívia</option>
+					<option value="brasil">Brasil</option>
+					<option value="colombia">Colombia</option>
+					<option value="xile">Xile</option>
+					<option value="paraguai">Paraguai</option>
+					<option value="equador">Equador</option>
+					<option value="peru">Peú</option>
+					<option value="uruguai">Uruguai</option>
+					<option value="veneçuela">Veneçuela</option>
+				</select>
+				<p>
+				<button href="../HTML/Inicio.html" type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+				</p>
+				<p>
+					<span class="obligatorio"> * </span>los campos son obligatorios.
+				</p>						
+			</form>
+		</div>	
+	</div>
         <footer>
             &copy;2022-2025 Copyright Steel Core Collection
             <p>
-            <aside>
+            <aside class="redes">
                 <a href="https://www.instagram.com/">
-                <img src="../Fotos/Instagram_logo_2022.png" width="3%" height="5%">
+                <img src="../Fotos/Instagram_logo_2022.png">
                 </a>
                 <a href="https://www.facebook.com/">
-                <img src="../Fotos/facebook.jpeg" width="3%" height="5%">
+                <img src="../Fotos/facebook.jpeg">
                 </a>
                 <a href="https://x.com/">
-                <img src="../Fotos/x.png" width="3%" height="5%">
+                <img src="../Fotos/x.png">
                 </a>
             </aside>
+            <aside>
+                    <img src="../Fotos/Captura de pantalla 2025-11-24 172621.png" id="publicidad"></img>
+                    <img src="../Fotos/Captura de pantalla 2025-11-25 121744.png" id="publicidad"></img>
             </p>
         </footer>
     </body>
