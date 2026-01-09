@@ -1,0 +1,130 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background: linear-gradient(to bottom, rgba(170, 130, 80, 1), rgba(220, 190, 140, 1), rgba(250, 240, 214, 1)), linear-gradient(to top, rgba(170, 130, 80, 1), rgba(220, 190, 140, 1), rgba(250, 240, 214, 1));
+}
+#cap{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px;
+    height: 775px;
+}
+
+#logo{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+#logo img{
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    padding-top: 20px;
+
+}
+header{
+    width:100%;
+    justify-content: center;
+    display: flex;
+    height: 800px;
+}
+#foto {
+    padding: 0px;
+}
+#foto img{
+    width:100%;
+    align-items: center;
+    position: absolute;
+    object-fit: cover;  
+    top: 0px;
+    left: 0px;  
+    z-index: -1;
+    height: 800px;
+        object-position: top;
+        background-attachment: fixed;
+        background-size: cover;       
+        background-position: center;   
+        background-repeat: no-repeat;                  
+        display: flex; 
+    }
+#text{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+#text a{
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgba(170, 130, 80, 1), rgba(220, 190, 140, 1), rgba(250, 240, 214, 1);
+}
+.caja {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+  padding: 60px;
+  text-align: center;
+}
+.item1 img, .item2 img, .item3 img, .item4 img, .item5 img, .item6 img, .item7 img, .item8 img, .item9 img, .item10 img, .item11 img, .item12 img, .item13 img, .item14 img, .item15 img, .item16 img, .item17 img, .item18 img, .item19 img, .item20 img, .item21 img, .item22 img, .item23 img, .item24 img, .item25 img, .item26 img, .item27 img, .item28 img, .item29 img, .item30 img, .item31 img, .item32 img, .item33 img{
+    width: 100px;
+    height: 100px;
+    gap:0px;
+    transition: transform 0.6s ease;
+}
+.item1 img:hover, .item2 img:hover, .item3 img:hover, .item4 img:hover, .item5 img:hover, .item6 img:hover, .item7 img:hover, .item8 img:hover, .item9 img:hover, .item10 img:hover, .item11 img:hover, .item12 img:hover, .item13 img:hover, .item14 img:hover, .item15 img:hover, .item16 img:hover, .item17 img:hover, .item18 img:hover, .item19 img:hover, .item20 img:hover, .item21 img:hover, .item22 img:hover, .item23 img:hover, .item24 img:hover, .item25 img:hover, .item26 img:hover, .item27 img:hover, .item28 img:hover, .item29 img:hover, .item30 img:hover, .item31 img:hover, .item32 img:hover, .item33 img:hover{
+    transform: scale(2.5);
+}
+.caja2 {
+  column-count: 4;
+  column-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  
+  padding: 80px;
+  gap:20px;
+  text-align: center;
+}
+.caja2 div img {
+  width: 100%;
+  height: auto;
+
+  transition: transform 0.5s ease;
+}
+.caja2 img:hover {
+  transform: scale(1.5);
+}
+.objeto1 img, .objeto2 img, .objeto3 img, .objeto4 img, .objeto5 img, .objeto6 img, .objeto7 img, .objeto8 img, .objeto9 img, .objeto10 img, .objeto11 img{
+    padding:15px;
+}
+.objeto11{
+    width:250px;
+    height: 100px;
+    
+}
+
+.giro180 img{
+    transition: all 1s;
+}
+
+.giro180 img:hover{
+    transform: rotate(180deg) scale(2.5);
+}
+
+.giro90 img{
+    transition: all 1s;
+}
+
+.giro90 img:hover{
+    transform: rotate(90deg) scale(2.5);
+}
+.giro270 img{
+    transition: all 1s;
+}
+
+.giro270 img:hover{
+    transform: rotate(-90deg) scale(2.5);
+}
