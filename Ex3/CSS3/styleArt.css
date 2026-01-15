@@ -101,11 +101,10 @@ header{
     padding:15px;
 }
 .objeto11{
-    width:250px;
-    height: 100px;
+    max-width: 100%;
+    width: 400px;
     
 }
-
 .giro180 img{
     transition: all 1s;
 }
@@ -127,4 +126,5 @@ header{
 
 .giro270 img:hover{
     transform: rotate(-90deg) scale(2.5);
+
 }
