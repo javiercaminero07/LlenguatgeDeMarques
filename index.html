@@ -1,18 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Exercici 1</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Índex Personal</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <link rel="icon" href="./FotosInici/favicon48-removebg-preview.png" type="image/x-icon">
+      <link rel="stylesheet" href="./styleInici.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     </head>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="./FotosInici/favicon48-removebg-preview.png" alt="icona" width="50"/>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#sobremi">Aprèn sobre mi</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#webdesign" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pàgines Web</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#pagina1">Pàgina 1</a></li>
+                  <li><a class="dropdown-item" href="#pagina2">Pàgina 2</a></li>
+                  <li><a class="dropdown-item" href="#pagina3">Pàgina 3</a></li>
+                  <li><a class="dropdown-item" href="#">Futures actualitzacions</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#projectes-video">Projectes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacte">Contacte</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search"/>
+              <button class="btn btn-outline-success" type="submit">Cerca</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
     <body>
-        <a href="./Ex1/HTML/inicio.html">Exercici 1</a>
-            <p>
-                <a href="./Ex2/HTML2/InicioPignosie.html">Exercici 2</a> 
-            </p>
-            <p>
-                <a href="./Ex3/HTML3/inicioMiguelA.html">Exercici 3</a>
-            </p>
+        <section class="hero align-items-stretch">          
+          <div>
+            <img class="hero-imatge-developer" src="./FotosInici/FotoCurriculum.png" alt="foto personal" />
+            <h1>Hola, sóc Javier Caminero Rodríguez</h1>
+            <h2>Densenvolupador de Software i Estudiant de DAM</h2>
+          </div>
+          <div class="hero-inferior">
+            <img class="img-fluid" src="./FotosInici/cosaInformatica.png"/>
+          </div>
+        </section>
+         <section id="sobremi" class="about-me dark-section">
+          <div>
+              <h2 class="section-title">Aprèn sobre mi</h2>
+              <p class="section-text">Em dic Javier, tinc 18 anys i soc estudiant de 1r de DAM, en objectiu de ser un desenvolupador d'aplicacions mòbil, alhora que exercir com a programador i amb les aspiracions de treballar a futur a jocs d'ordinador. Bomba a la cuaca</p>
+          </div>
+          <div class="text-center">
+              <a href="./FotosInici/Javier Caminero (3).pdf" download class="btn btn-primary btn-lg btn-responive">
+                  📄 Descarregar CV
+              </a>
+          </div>
+        </section>
+        <section class="experiencia white-section">
+           <div class="container text-center">
+              <div class="row">
+                  <div class="columna col-12 col-md-4">
+                      <i class="bi bi-filetype-html"></i>
+                      <p class="experiencia-title">Desenvolupament Web</p>
+                      <p class="experiencia-text">Procés integral de crear, programar i mantenir llocs web o aplicacions web, des de la idea inicial fins al funcionament a internet, utilitzant llenguatges com HTML, CSS i JavaScript per construir la part visual (frontend) i la lògica del servidor (backend), assegurant que siguin funcionals, atractius i accessibles per als usuaris. Coneixement a HTML i CSS.</p>
+                      <div class = "badges-contenedor">
+                        <span class="badge rounded-pill bg-primary">HTML</span>
+                        <span class="badge rounded-pill bg-primary">CSS</span>
+                        <span class="badge rounded-pill bg-primary">Javascript</span>
+                        <span class="badge rounded-pill bg-primary">Bootstrap</span>
+                        <span class="badge rounded-pill bg-primary">VUE</span>
+                      </div>
+                  </div>
+                  <div class="columna col-12 col-md-4">
+                      <i class="bi bi-filetype-java"></i>
+                      <p class="experiencia-title">Java</p>
+                      <p class="experiencia-text">Llenguatge de programació orientat a objectes i una plataforma informàtica molt popular, coneguda per la seva versatilitat i capacitat de ser multiplataforma. Coneixement a Java i Entorns Java.</p>
+                      <div class = "badges-contenedor">
+                        <span class="badge rounded-pill bg-primary">Eclipse</span>
+                        <span class="badge rounded-pill bg-primary">Javadoc</span>
+                        <span class="badge rounded-pill bg-primary">JDK</span>
+                      </div>
+                  </div>
+                  <div class="columna col-12 col-md-4">
+                      <i class="bi bi-windows"></i>
+                      <p class="experiencia-title">O.S.</p>
+                      <p class="experiencia-text">Programari fonamental que gestiona el maquinari i els recursos d'un ordinador o dispositiu, actuant com a intermediari entre l'usuari i la màquina. Coneixement en ordres Windows i Linux.</p>
+                      <div class = "badges-contenedor">
+                        <span class="badge rounded-pill bg-primary">Windows</span>
+                        <span class="badge rounded-pill bg-primary">Linux</span>
+                        <span class="badge rounded-pill bg-primary">Servers</span>
+                        <span class="badge rounded-pill bg-primary">Bash</span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+        <section id="webdesign" class="projectes white-section">
+          <h2 class="section-title black-text">Disseny Web</h2>
+          <h3 class="section-description">Els projectes actuals han sigut creats durant el cicle de DAM</h3>
+          <div class="container projectes-container">
+            <div class="row justify-content-center">
+              <!-- Proyecto 1 -->
+              <div id="pagina1" class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/PaginaWeb1.png" alt="projecte 1"/>
+                <div class="overlay">
+                  <p>Botiga de Equipament de Gimnàs</p>
+                  <div class="icones-contenidor">
+                    <a href="./Ex1/HTML/Inicio.html" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-heart-pulse-fill"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Proyecto 2 -->
+              <div id="pagina2" class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/PaginaWeb2.png" alt="projecte 2"/>
+                <div class="overlay">
+                  <p>Pàgina Web de Pignoise</p>
+                  <div class="icones-contenidor">
+                    <a href="./Ex2/HTML2/InicioPignosie.html" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-piggy-bank-fill"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Proyecto 3 -->
+              <div id="pagina3" class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/PaginaWeb3.png" alt="projecte 3"/>
+                <div class="overlay">
+                  <p>Pàgina Web de Miguel Angel</p>
+                  <div class="icones-contenidor">
+                    <a href="./Ex3/HTML3/inicioMiguelA.html" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-brush-fill"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Proyecto 4 -->
+              <div class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/FirulaisTrabajador-removebg-preview.png" alt="projecte 4"/>
+                <div class="overlay">
+                  <p>Els nostres treballadors estan en procés d'acabar el projecte, es prega paciència</p>
+                  <div class="icones-contenidor">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-tree-fill"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Proyecto 5 -->
+              <div class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/PerroBobConstructor (2).png" alt="projecte 5"/>
+                <div class="overlay">
+                  <p>Els nostres treballadors estan en procés d'acabar el projecte, es prega paciència</p>
+                  <div class="icones-contenidor">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-cone-striped"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Proyecto 6 -->
+              <div class="projecte col-12 col-md-6 mb-4">
+                <img src="./FotosInici/HuskyTrabajador.png" alt="projecte 6"/>
+                <div class="overlay">
+                  <p>Els nostres treballadors estan en procés d'acabar el projecte, es prega paciència</p>
+                  <div class="icones-contenidor">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                      <i class="bi bi-cone-striped"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="projectes-video" class="projectes white-section d-flex flex-column">
+          <h2 class="section-title black-text">Desenvolupament d'aplicacions</h2>
+          <h3 class="section-description">Encara no hi ha aplicacions desenvolupades en el cicle de DAM </h3>
+          <div class="container text-center projectes-container">
+            <div class="row">
+              <div class="projecte col-12 col-md-6 col-lg-4">
+                <div class="video">
+                    <video controls poster="miniatura.jpg" width="800">
+                        <source src="./FotosInici/YTDown.com_YouTube_Muhammad-Sumbul_Media_O08XTXJSOtI_001_1080p.mp4" type="video/mp4">
+                    </video> 
+                </div>
+                <h2>El meu projecte 1</h2>
+                <p>Primer video 👍</p>
+              </div>
+              <div class="projecte col-12 col-md-6 col-lg-4">
+                <div class="video">
+                    <video controls poster="miniatura.jpg" width="800">
+                        <source src="./FotosInici/ytdowncom-youtube-vegetta777-cantando-el-principe-de-bel-a-media-i2urq20ozua-00_xV5kGALQ.mp4" type="video/mp4">
+                    </video> 
+                </div>
+                <h2>El meu projecte 2</h2>
+                <p>Segon video 👍</p>
+              </div>
+              <div class="projecte col-12 col-md-6 col-lg-4">
+                <div class="video">
+                    <video controls poster="miniatura.jpg" width="800">
+                        <source src="./FotosInici/YTDown.com_YouTube_Elmo-dances-on-the-moon_Media_xMiGhXvvSLI_001_360p.mp4" type="video/mp4">
+                    </video>                
+                </div>
+                <h2>El meu projecte 3</h2>
+                <p>Tercer video 👍</p>
+              </div>
+            </div>
+          </div>
+        </section>
     </body>
+    <footer id="contacte" class="dark-section d-flex flex-column align-items-center justify-content-center">
+      <img class="footer-logo" src="./FotosInici/favicon48-removebg-preview.png" alt="logo"/>
+      <p class="footer-text text-center">Contacte</p>
+      <div class= "social-icons d-flex flex-wrap align-items-center justify-content-center">
+        <a href="mailto:25javier.caminero@inscastellet.cat" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/javier-caminero-rodriguez-808206361/" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/javiercaminero07" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.twitter.com/javier-caminero" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-twitter"></i>
+        </a>
+      </div>
+      <div class="drets">Creat per Javier Caminero (2026) &#169;</div>
+    </footer>
 </html>
