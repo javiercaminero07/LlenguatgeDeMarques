@@ -1,0 +1,284 @@
+#logo{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+#logo img{
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    padding-top: 0px;
+}
+#cap{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px;
+    height: 775px;
+}
+header{
+    width:100%;
+    justify-content: center;
+    display: flex;
+    max-height: 500px;
+}
+#foto {
+    padding: 0px;
+}
+#foto img{
+    width:100%;
+    align-items: center;
+    position: absolute;
+    object-fit: cover;  
+    top: 0px;
+    left: 0px;  
+    z-index: -1;
+    height: 500px;
+        object-position: top;
+        background-attachment: fixed;
+        background-size: cover;       
+        background-position: center;   
+        background-repeat: no-repeat;                  
+        display: flex; 
+}
+@media (max-width: 575.98px) {
+  body {
+    background: rgb(184, 7, 7);
+  }
+  header #foto img{
+    height: 500px;
+  }
+  .imatge{
+    padding: 10px;
+  }
+  .columna-text{
+    object-fit: contain;
+    padding:0px;
+    margin:0px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;  
+    text-align: center;
+    column-count: 1;
+    column-gap: 150px;
+  }
+  section article{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .apartat{
+    width: 100%;
+    height: auto; 
+  }
+  .apartat iframe{
+    width:300px;
+    height:200px;
+  }
+}    
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  body {
+    background: rgb(34, 147, 31);
+  }
+  header #foto img{
+    height: 500px;
+  }
+  .imatge{
+    padding: 20px;
+  }
+  .apartat iframe{
+    width:300px;
+    height:200px;
+  }
+  .apartat iframe:hover{
+  transform: scale(1.23);
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background: rgb(255, 255, 255);
+  }
+  .apartat iframe:hover{
+  transform: scale(1.5);
+  }
+}
+.apartat a{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.apartat img{
+    width: 300px;
+    height: 250px;
+}
+.apartat{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.overpass{
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+/*Centrado de imagenes basicas en todos los formatos*/
+.centrar{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+}
+.imatge{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    padding:35px;
+    margin:20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;  
+    text-align: center;
+}
+section img{
+    height: 350px;
+    width: 350px;
+    padding: 4px;
+}
+article div{
+  display: flex;      
+  flex-direction: column; 
+  align-items: center;  
+  text-align: center;
+}
+section{
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  display: inline-flex;   
+  position: relative;   
+  width: 100%;
+  -ms-flex-item-align:center;
+  gap: 30px;   
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+section div{
+  display: flex;
+  margin: 5px;
+  right:20px;
+  align-items: center;
+}
+.apartat2 img{
+  width: 300px;
+  height: 255px;
+}
+div .texto a{
+  padding-top: 22px;
+}
+/*Fin de imagenes basicas*/
+/*Centrado imagenes 360*/
+.imatges-360{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+section .imatges-360{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.overpass-titulo{
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  padding: 20px;
+  padding-top: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.recuadre{
+  padding-bottom: 50px;
+}
+.columna-text{
+  column-count: 2;
+  column-gap: 100px;
+}
+.letra{
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+.apartat iframe{
+  width: 450px;
+  height: 350px;
+  transition: transform 0.6s ease;
+}
+/*Fin imagenes 360º*/
+/*Centrado videos 360º*/
+.video{
+  position: relative;
+  width: 100%; 
+  padding-top: 56.25%; 
+}
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.posicion{
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+    padding:0px;
+    margin:0px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;  
+    text-align: center;
+}
+/*Fin videos 360º*/
+.link a{
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s ease;
+    text-align: center;
+}
+.link a:hover{
+    color: rgb(59, 188, 83);
+}
+.link{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding-bottom: 50px; 
+}
+.distancia{
+  padding-top: 100px;
+}
