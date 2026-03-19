@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /*fondo de animal crossing*/
+            body{
+                background-image: url(./imagenes/fondo.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            body h1{
+                text-align: center;
+                font-family: 'Franklin Gothic Medium';
+                font-size: 40px;
+            }
+            .titulo{
+                background-color: white;  
+                display: block;      
+                padding: 5px 5px;          
+                width: 400px;     
+                text-align: center;         
+                border-radius: 20px;         
+                box-shadow: 0 0 5px rgba(0,0,0,0.2); 
+                margin: 0 auto;
+            }
+            body h2{
+                text-align: center;
+                font-family: 'Franklin Gothic Medium';
+                font-size: 30px;
+            }
+            .tableroPunt{
+                width: 360px;
+                padding: 10px;
+                text-align: center;
+                left: auto;
+                top: auto;
+                background-color: white;
+                margin: 0px;
+                box-shadow: 0 0 5px rgba(0,0,0,0.2);
+                border-radius: 20px;
+            }
+            body .tableroPunt h3{
+                font-family: 'Franklin Gothic Medium';
+                font-size: 35px;
+            }
+            .tableroPunt div h4{
+                    z-index: 1;
+            }
+            #tablero{
+                width: 360px;
+                margin: auto;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+            .hueco{
+                width: 200px;
+                height: 200px;
+                position: relative;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+            .hueco img{
+                width: 100%;
+                height: 100%;
+            }
+            .medalla{
+                width: 200px;
+                height: 200px;
+                position: relative;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .medalla img{
+                width: 100px;   
+                height: 100px;
+                object-fit: contain;
+            }
+            #medalleroContainer{
+                position: absolute;
+                top: 120px;                 
+                right: 20px;             
+                width: auto;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+            }
+            #medallero{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px;
+                padding: 10px;
+                border-radius: 15px;
+            }
+            #user{
+                font-size: 20px;
+            }
+            #premio{
+                display: none;             
+                position: fixed;        
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 550px;                
+                height: auto;
+                z-index: 9999;               
+                padding: 10px;
+            }
+            .fade-in {
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+            }
+            .fade-in.show {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="titulo">
+            <h1>Alonso y sus primos de Zamora</h1>
+        </div>
+        <div class="tableroPunt">
+            <h3>Tabla de puntuación</h3>
+            <div>
+                <h4 id="user"><span id="puntuacion"> 0</span></h4>
+            </div>
+        </div>
+        <div id="tablero">
+            <div class="hueco" onclick="putazo(0)">
+                <img id="imagen0" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(1)">
+                <img id="imagen1" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(2)">
+                <img id="imagen2" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(3)">
+                <img id="imagen3" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(4)">
+                <img id="imagen4" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(5)">
+                <img id="imagen5" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(6)">
+                <img id="imagen6" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(7)">
+                <img id="imagen7" src="./imagenes/casilla (2).png">
+            </div>
+            <div class="hueco" onclick="putazo(8)">
+                <img id="imagen8" src="./imagenes/casilla (2).png">
+            </div>
+        </div>
+        <div>
+            <img id="premio" class="fade-in"src="./imagenes/trofeo.png" style="display:none;">
+        </div>
+        <div id="medalleroContainer">
+            <div id="medallero">
+                <div class="medalla" >
+                    <img id="insignia1" src="./imagenes/Insignia1Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia2" src="./imagenes/Insignia2Vacia.png">
+                </div>
+                <div class="medalla" >
+                    <img id="insignia3" src="./imagenes/Insignia3Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia4" src="./imagenes/Insignia4Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia5" src="./imagenes/Insignia5Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia6" src="./imagenes/Insignia6Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia7" src="./imagenes/Insignia7Vacia.png">
+                </div>
+                <div class="medalla">
+                    <img id="insignia8" src="./imagenes/Insignia8Vacia.png">
+                </div>
+            </div>
+        </div>
+        <script>
+            //Para poner la puntuacion en la tabla de puntuacion
+            let user = prompt("Usuari: ");
+            //Detecta lo escrito en respuesta el prompt y lo muestra en la linia que referencie a user
+            document.getElementById("user").innerHTML = `${user} Puntuacio: <span id="puntuacion">0</span>`;
+            //Para la personalización del raton en el juego
+            document.body.style.cursor = 'pointer';
+            document.body.style.cursor = 'url("./imagenes/Martillo.png"), auto';
+            let puntos = 0;
+            //Para cuando es agujero con topo
+            let TopoSi = [false, false, false, false, false, false, false, false, false];
+            //Para cuando lo golpean
+            let TopoGolpeado = [false, false, false, false, false, false, false, false, false];
+            //Para cuando el topo vale 20 puntos
+            let DigletDiferente = [false, false, false, false, false, false, false, false, false];
+            //Para cuando vale 30 puntos
+            let TopoEspecial = [false, false, false, false, false, false, false, false, false];
+            //Los tres topos especiales
+            let topoFernando = false;
+            let topoTriple = false;
+            let topoReseteo = false;
+
+            //Para sacar a los topos, se pone todo lo que hay en false
+            function corre(){
+                for(let i = 0; i < 9; i++){
+                    TopoSi[i] = false;
+                    TopoGolpeado[i] = false;  
+                    DigletDiferente[i] = false;
+                    TopoEspecial[i] = false;
+                    document.getElementById("imagen" + i).src = "./imagenes/casilla (2).png";
+                    topoFernando = false;
+                    topoTriple = false;
+                    topoReseteo = false;
+                }
+            }
+            //Esta es la variable para diferenciar si ya ha salido un diglet mas valioso y no salgan mas de uno por vez
+            let digletDiferente = false;
+            let digletDiferente1 = false;
+            let digletDiferente2 = false;
+            let digletDiferente3 = false;
+            let digletDiferente4 = false;
+            //Sale el topo del agujero
+            function sacalaTopito() {
+                if (puntos >= 2000) {
+                    return corre(); // NO MÁS TOPOS
+                }
+                //primero tiene que estar vacio
+                corre();
+                digletDiferente = false;
+                digletDiferente1 = false;
+                digletDiferente2 = false;
+                digletDiferente3 = false;
+                digletDiferente4 = false;
+                //La variable posiciones para los cuatro array de arriba, que dictan las posiciones de las tres que hay
+                let posiciones = [];
+                let random = Math.floor(Math.random() * 3);
+                //Dependiendo del random se saca un, dos o tres topos
+                if(random == 0){
+                    while(posiciones.length < 1){
+                        let r = Math.floor(Math.random() * 9);
+                        if(!posiciones.includes(r)){
+                            posiciones.push(r);
+                        }
+                    }
+                }else if(random == 1){
+                    while(posiciones.length < 2){
+                        let r = Math.floor(Math.random() * 9);
+                        if(!posiciones.includes(r)){
+                            posiciones.push(r);
+                        }
+                    }
+                }else if(random == 2){
+                    while(posiciones.length < 3){
+                        let r = Math.floor(Math.random() * 9);
+                        if(!posiciones.includes(r)){
+                            posiciones.push(r);
+                        }
+                    }
+                }
+                for (let i = 0; i < posiciones.length; i++) {
+                    let pos = posiciones[i];
+                    //Dependiendo un valor aleatorio, se saca un tipo de topo, o, por el contrario uno normal
+                    let rand = Math.floor(Math.random() * 34);
+                    //Digletts de 20 puntos
+                    if (digletDiferente == false && (rand === 2 || rand === 4 || rand === 6 || rand === 8 || rand === 3 || rand === 20 || rand === 15 || rand === 24 || rand === 32 )) {
+                        if (rand == 2 || rand == 15 ||rand == 3) {
+                            document.getElementById("imagen" + pos).src = "./imagenes/diglettmeneao.png";
+                            digletDiferente1 = true;
+                        } else if (rand == 4 || rand == 20 || rand == 24) {
+                            document.getElementById("imagen" + pos).src = "./imagenes/digglettriste.png";
+                            digletDiferente2 = true;
+                        } else if (rand == 6 || rand == 11 || rand == 32) {
+                            document.getElementById("imagen" + pos).src = "./imagenes/diglettmojon.png";
+                            digletDiferente3 = true;
+                        } else if (rand == 8 || rand == 21 || rand == 28) {
+                            document.getElementById("imagen" + pos).src = "./imagenes/diglettaplastado.png";
+                            digletDiferente4 = true;
+                        }
+                        DigletDiferente[pos] = true;
+                        digletDiferente = true; 
+                    //Digletts de 30 puntos
+                    }else if(digletDiferente == false && (rand == 14 || rand == 1 | rand == 31 || rand == 33)){
+                        if(rand == 14){
+                            document.getElementById("imagen" + pos).src = "./imagenes/Reseteo.png";
+                            topoReseteo = true;
+                        }else if(rand == 33){
+                            document.getElementById("imagen" + pos).src = "./imagenes/FernandoAlonso.png";
+                            topoFernando = true;
+                        }else if(rand == 1 || rand == 31){
+                            document.getElementById("imagen" + pos).src = "./imagenes/Dugtrio.png";
+                            topoTriple = true;
+                        }
+                        TopoEspecial[pos] = true;
+                        digletDiferente = true; 
+                    //Digletts normales
+                    }else{
+                        document.getElementById("imagen" + pos).src = "./imagenes/digletsaliendo.png";
+                        TopoEspecial[pos] = false;    
+                        DigletDiferente[pos] = false;
+                    }
+                    //Esta el topo, pero aun no ha sido golpeado
+                        TopoSi[pos] = true;
+                        TopoGolpeado[pos] = false;
+                    }
+                }
+            let intervalo = setInterval(sacalaTopito,1.5 * 1000);
+            let victoriaReproducida = false;
+            //num se refiere al numero de las posiciones que se ha dado aleatoriamente antes
+            //funcion para cuando lo golpean
+            function putazo(num){  
+                //Si es topo especial, foto especifica
+                if(TopoSi[num] === true && !TopoGolpeado[num]){
+                    if(TopoEspecial[num] && topoFernando === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/fernandoRoto.png";                      
+                    }else if(TopoEspecial[num] && topoReseteo === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/reseteoRoto.png";   
+                    }else if(TopoEspecial[num] && topoTriple === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/dugtrioRoto.png"; 
+                    }else if(DigletDiferente[num] && digletDiferente1 === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/diglettRoto (2).png"; 
+                    }else if(DigletDiferente[num] && digletDiferente2 === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/digletttristeRoto.png"; 
+                    }else if(DigletDiferente[num] && digletDiferente3 === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/diglettRoto (2).png"; 
+                    }else if(DigletDiferente[num] && digletDiferente4 === true){
+                        document.getElementById("imagen" + num).src = "./imagenes/diglettRoto (2).png"; 
+                    //Sino, topo generico golpeado
+                    }else{
+                        document.getElementById("imagen" + num).src = "./imagenes/diglettRoto (2).png";   
+                    }
+                    //Si no se pone asi, si golpeo a uno de 30 y despues a uno de 10 rapidamente, podria pillar el valor de 30 puntos siendo solo uno de 10
+                    //Si es topo especial 30 puntos
+                    if (TopoEspecial[num]) {
+                        puntos += 30;
+                    //Si es topo diferente 20 puntos
+                    } else if (DigletDiferente[num]) {
+                        puntos += 20;
+                    //Si es normal 10 puntos
+                    } else {
+                        puntos += 10;
+                    }
+                    document.getElementById("puntuacion").innerHTML = puntos;
+                    //El sonido del golpe
+                    var so = new Audio("./imagenes/boing.mp3");
+                    so.play();
+                    //Se confirma que han sido golpeados los topos que estan afuera y les has dado con el cursor
+                    TopoGolpeado[num] = true;
+                //Si no le das al topo y le das a hueco vacio, se "rompe" el hueco
+                }else if(TopoSi[num] != true){
+                    document.getElementById("imagen" + num).src = "./imagenes/huecoroto (2).png";
+                }
+                //Sistema de puntuación, desde 200 hasta 2000, se ganan medallas (de Hoenn)
+                if(puntos >= 200 && !victoriaReproducida){
+                    document.getElementById("insignia1").src = "./imagenes/Insignia1.png";
+                }
+                if(puntos >= 400){
+                    document.getElementById("insignia2").src = "./imagenes/Insignia2.png";
+                }
+                if(puntos >= 600){
+                    document.getElementById("insignia3").src = "./imagenes/Insignia3.png";
+                }
+                if(puntos >= 800){
+                    document.getElementById("insignia4").src = "./imagenes/Insignia4.png";
+                }
+                if(puntos >= 1000){
+                    document.getElementById("insignia5").src = "./imagenes/Insignia5.png";
+                }
+                if(puntos >= 1300){
+                    document.getElementById("insignia6").src = "./imagenes/Insignia6.png";
+                }
+                if(puntos >= 1600){
+                    document.getElementById("insignia7").src = "./imagenes/Insignia7.png";
+                }
+                if (puntos >= 2000 && !victoriaReproducida) {
+                    document.getElementById("insignia1").src = "./imagenes/Insignia1.png";
+                    document.body.style.backgroundImage = 'url("./imagenes/fondo-victoria.png")';
+                    var trompeta = new Audio("./imagenes/trompetas.mp4");
+                    trompeta.addEventListener("ended", () => {
+                        trompeta.currentTime = 0;
+                    });
+                    trompeta.play();   
+                    victoriaReproducida = true;
+                    document.getElementById("premio").style.display = "block";
+                    requestAnimationFrame(() => {
+                        premio.classList.add("show"); // Activa el fade-in
+                    });
+                }else{
+                    document.getElementById("premio").style.display = "none";  
+                }
+            }
+            //A una velocidad de 1,5 segundos
+            setInterval(sacalaTopito,1.5 * 1000);
+        </script>
+    </body>
+</html>
