@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego ml5</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+
+<style>
+html, body { margin: 0; padding: 0; overflow: hidden; }
+canvas { display: block; }
+#videoEl {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    object-fit: cover;
+    transform: scaleX(-1);
+    z-index: 0;
+}
+#defaultCanvas0 {
+    position: fixed; top: 0; left: 0;
+    z-index: 1;
+    background: transparent !important;
+}
+#uploadUI {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.82);
+    z-index: 100;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 18px; color: white; font-family: sans-serif;
+}
+#uploadUI h2 { margin: 0; font-size: 26px; }
+#uploadUI p  { margin: 0; font-size: 15px; color: #bbb; text-align: center; }
+#fileInput   { display: none; }
+#uploadLabel {
+    padding: 12px 28px;
+    background: #fff; color: #111;
+    border-radius: 10px; font-size: 16px;
+    cursor: pointer; font-weight: bold;
+}
+#uploadLabel:hover { background: #e0e0e0; }
+#previewRow  {
+    display: flex; flex-wrap: wrap;
+    gap: 10px; justify-content: center;
+    max-width: 80vw;
+}
+#previewRow img {
+    width: 70px; height: 70px;
+    object-fit: cover; border-radius: 10px;
+    border: 2px solid #fff;
+}
+#startBtn {
+    padding: 14px 36px;
+    background: #00dc50; color: #000;
+    border: none; border-radius: 12px;
+    font-size: 20px; font-weight: bold;
+    cursor: pointer; display: none;
+}
+#startBtn:hover { background: #00b840; }
+#skipBtn {
+    font-size: 13px; color: #888;
+    background: none; border: none;
+    cursor: pointer; text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Panel de carga de imágenes -->
+<div id="uploadUI">
+    <h2>🎮 Juego de comida</h2>
+    <p>Sube tus propias imágenes para que caigan en el juego<br>(opcional — puedes saltar este paso)</p>
+    <label id="uploadLabel" for="fileInput">📁 Elegir imágenes</label>
+    <input id="fileInput" type="file" accept="image/*" multiple>
+    <div id="previewRow"></div>
+    <button id="startBtn">▶ Jugar</button>
+    <button id="skipBtn">Saltar, jugar sin imágenes</button>
+</div>
+
+<script>
+// Gestión de carga de imágenes
+let customImageDataURLs = [];
+let loadedCustomImages  = [];
+
+const fileInput  = document.getElementById('fileInput');
+const previewRow = document.getElementById('previewRow');
+const startBtn   = document.getElementById('startBtn');
+const skipBtn    = document.getElementById('skipBtn');
+const uploadUI   = document.getElementById('uploadUI');
+
+fileInput.addEventListener('change', () => {
+    customImageDataURLs = [];
+    previewRow.innerHTML = '';
+    const files = Array.from(fileInput.files);
+    let loaded = 0;
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+            customImageDataURLs.push(e.target.result);
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            previewRow.appendChild(img);
+            loaded++;
+            if (loaded === files.length) startBtn.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+function startGame() {
+    userStartAudio(); // 🔊 Permite sonido
+    uploadUI.style.display = 'none';
+    customImageDataURLs.forEach(url => {
+        loadImage(url, img => loadedCustomImages.push(img));
+    });
+}
+
+startBtn.addEventListener('click', startGame);
+skipBtn.addEventListener('click', startGame);
+</script>
+
+<script>
+// ─────────── JUEGO PRINCIPAL ───────────────
+let gameMusic;
+
+function preload() {
+    gameMusic = loadSound("./italiano.mp3");
+}
+
+let video, poseNet, poses = [], score = 0;
+
+const foodIcons = ["🍎","🥦","🍌","🍪","🍔","🍕","🍓","🍇","🍍"];
+const badIcons  = ["✈️","💿","🧲","👟","💾"];
+
+let fallingFood = [];
+let gameState = "waiting";
+let timeLeft = 60, lastSecond = 0;
+
+function setup() {
+    let cnv = createCanvas(windowWidth, windowHeight);
+    cnv.style('background', 'transparent');
+
+    video = createCapture(VIDEO);
+    video.id('videoEl');
+    video.elt.style.cssText = '';
+    video.hide = () => {};
+    document.body.appendChild(video.elt);
+    Object.assign(video.elt.style, {
+        position:'fixed', top:'0', left:'0',
+        width:'100vw', height:'100vh',
+        objectFit:'cover', transform:'scaleX(-1)', zIndex:'0'
+    });
+
+    poseNet = ml5.poseNet(video, { flipHorizontal: true });
+    poseNet.on("pose", r => poses = r);
+
+    for (let i = 0; i < 15; i++) fallingFood.push(createFoodItem());
+}
+
+function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+
+function createFoodItem() {
+    let roll = random();
+    let type, icon = null, pImg = null;
+
+    const hasCustom = loadedCustomImages.length > 0;
+
+    if (roll < 0.28) {
+        type = "bad";
+        icon = random(badIcons);
+    } else if (hasCustom && roll < 0.55) {
+        type = "image";
+        pImg = random(loadedCustomImages);
+    } else {
+        type = "good";
+        icon = random(foodIcons);
+    }
+
+    return {
+        x: random(30, width - 30),
+        y: random(-3000, -500),
+        speed: random(4, 4),
+        size: random(120, 120),
+        type, icon, pImg
+    };
+}
+
+function resetFoodItem(food) {
+    const n = createFoodItem();
+    Object.assign(food, n);
+    food.y = random(-1400, -800);
+}
+
+function resetGame() {
+    score = 0;
+    timeLeft = 60;
+    lastSecond = floor(millis() / 1000);
+    fallingFood.forEach(f => {
+        const n = createFoodItem();
+        Object.assign(f, n);
+        f.y = random(-1400, -500);
+    });
+}
+
+function getHands() {
+    let lh = null, rh = null;
+    if (poses.length > 0) {
+        const kp = poses[0].pose.keypoints;
+        const lw = kp.find(k => k.part === "leftWrist");
+        const rw = kp.find(k => k.part === "rightWrist");
+        if (lw && lw.score > 0.2) lh = { x: lw.position.x * (width/640), y: lw.position.y * (height/480) };
+        if (rw && rw.score > 0.2) rh = { x: rw.position.x * (width/640), y: rw.position.y * (height/480) };
+    }
+    return { lh, rh };
+}
+
+function handsDist(a, b) { return (a && b) ? dist(a.x,a.y,b.x,b.y) : 9999; }
+
+function inCenter(lh, rh) {
+    if (!lh || !rh) return false;
+    const mx = (lh.x+rh.x)/2, my = (lh.y+rh.y)/2;
+    return handsDist(lh,rh) < 120 && dist(mx,my,width/2,height/2) < 150;
+}
+
+function drawItem(food) {
+    if (food.type === "image" && food.pImg) {
+        imageMode(CENTER);
+        drawingContext.save();
+        drawingContext.beginPath();
+        drawingContext.arc(food.x, food.y, food.size * 0.48, 0, Math.PI * 2);
+        drawingContext.clip();
+        image(food.pImg, food.x, food.y, food.size, food.size);
+        drawingContext.restore();
+        noFill(); stroke(80, 220, 80, 180); strokeWeight(3);
+        ellipse(food.x, food.y, food.size * 0.96);
+    } else {
+        noStroke();
+        if (food.type === "bad") fill(255,80,80,200);
+        else fill(255,255,255,210);
+
+        ellipse(food.x, food.y, food.size * 0.88);
+
+        textAlign(CENTER, CENTER);
+        textSize(food.size * 0.62);
+        fill(0);
+        text(food.icon, food.x, food.y);
+    }
+}
+
+function draw() {
+    clear();
+    const { lh, rh } = getHands();
+    const center = inCenter(lh, rh);
+
+    // WAITING
+    if (gameState === "waiting") {
+        const pulse = sin(millis() * 0.005) * 10;
+        fill(0, 220, 80, center ? 220 : 130);
+        stroke(0, 255, 100); strokeWeight(4);
+        ellipse(width/2, height/2, 200 + pulse);
+        fill(255); noStroke();
+        textAlign(CENTER, CENTER); textSize(22);
+        text("Junta las manos aquí\npara empezar", width/2, height/2);
+
+        if (center) { 
+            gameState = "playing"; 
+            resetGame();
+            if (!gameMusic.isPlaying()) gameMusic.loop();
+        }
+    }
+
+    // PLAYING
+    else if (gameState === "playing") {
+        const nowSec = floor(millis() / 1000);
+        if (nowSec > lastSecond) {
+            timeLeft -= (nowSec - lastSecond);
+            lastSecond = nowSec;
+        }
+
+        if (timeLeft <= 0) {
+            timeLeft = 0;
+            gameState = "gameover";
+            if (gameMusic.isPlaying()) gameMusic.stop();
+        }
+
+        for (let food of fallingFood) {
+            food.y += food.speed;
+
+            for (let hand of [lh, rh]) {
+                if (hand && dist(food.x, food.y, hand.x, hand.y) < food.size/2 + 15) {
+                    score = food.type === "bad" ? max(0, score-1) : score+1;
+                    resetFoodItem(food);
+                    break;
+                }
+            }
+
+            if (food.y > height + 120) resetFoodItem(food);
+            drawItem(food);
+        }
+
+        noStroke(); fill(255,50,50,180);
+        if (lh) ellipse(lh.x, lh.y, 120);
+        if (rh) ellipse(rh.x, rh.y, 120);
+
+        fill(255); stroke(0); strokeWeight(3); textSize(36);
+        textAlign(LEFT, TOP);  text("⏱ " + timeLeft + "s", 20, 20);
+        textAlign(RIGHT, TOP); text("Score: " + score, width-20, 20);
+    }
+
+    // GAMEOVER
+    else if (gameState === "gameover") {
+        fill(0,0,0,160); rect(0,0,width,height);
+
+        fill(20,20,20,210); stroke(255,200,0); strokeWeight(4);
+        rectMode(CENTER); rect(width/2, height/2, 480, 300, 30); rectMode(CORNER);
+
+        fill(255,200,0); textAlign(CENTER,CENTER);
+        textSize(48); text("¡Tiempo!", width/2, height/2-70);
+        textSize(36); fill(255); text("Puntuación: " + score, width/2, height/2);
+        textSize(20); fill(180); text("Junta las manos para repetir", width/2, height/2+70);
+
+        const pulse = sin(millis()*0.005)*10;
+        fill(0,220,80, center ? 220 : 100);
+        stroke(0,255,100); strokeWeight(4);
+        ellipse(width/2, height/2+130, 80+pulse);
+
+        if (center) { gameState = "playing"; resetGame(); gameMusic.loop(); }
+
+        noStroke(); fill(255,50,50,180);
+        if (lh) ellipse(lh.x, lh.y, 120);
+        if (rh) ellipse(rh.x, rh.y, 120);
+    }
+}
+</script>
+
+</body>
+</html>
